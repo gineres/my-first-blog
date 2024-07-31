@@ -25,3 +25,16 @@ jobs:
     - name: Run Syntax Check
       run: |
         python -m pyflakes
+  package-code:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+    - uses: actions/checkout@v4
+    - name: ZIP
+      run: zip -r nomee.zip .
+    - name: Archive
+      uses: actions/upload-artifact@v4
+      with: 
+        name: nome
+        path: nomee.zip
+        
